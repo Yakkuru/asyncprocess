@@ -1,5 +1,5 @@
 import asyncio
-from asyncprocess.async_task import AsyncTask
+from src.async_task import AsyncTask
 
 class AsyncProcess:
     def __init__(self, debug: bool = False):

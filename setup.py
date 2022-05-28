@@ -9,13 +9,12 @@ setup(
     version=VERSION,
     author="Marc-Antoine St-Pierre",
     author_email="<yakinquiries@gmail.com>",
+    url='https://github.com/Yakkuru/asyncprocess',
     description=DESCRIPTION,
     long_description_content_type="text/markdown",
     long_description=LONG_DESCRIPTION,
     packages=find_packages(),
-    install_requires=[],
     python_requires="~=3.7",
     keywords=['python', 'asyncio', 'async', 'task'],
-    classifiers=[
-    ]
+    package_dir={'': 'src'},
 )
