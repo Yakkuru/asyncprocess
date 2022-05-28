@@ -4,7 +4,6 @@ VERSION = '0.0.1'
 DESCRIPTION = 'Process managing async task'
 LONG_DESCRIPTION = 'Simple package that help you isolate your code in async task and run them on a single process with asyncio.'
 
-# Setting up
 setup(
     name="asyncprocess",
     version=VERSION,
@@ -14,7 +13,8 @@ setup(
     long_description_content_type="text/markdown",
     long_description=LONG_DESCRIPTION,
     packages=find_packages(),
-    install_requires=['opencv-python', 'pyautogui', 'pyaudio'],
+    install_requires=[],
+    python_requires="~=3.7",
     keywords=['python', 'asyncio', 'async', 'task'],
     classifiers=[
     ]
