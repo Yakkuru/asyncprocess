@@ -2,8 +2,8 @@ test:
 	pip install -e .
 	python test.py
 
-release:
+commit:
 	python setup.py sdist bdist_wheel
 
-publish:
+push:
 	twine upload dist/*
