@@ -22,19 +22,23 @@ class AsyncProcess:
             pass
         except Exception as ex:
             print(f'EXCEPTION: {ex}')
-        finally:
-            asyncio.run(self._stop_async())
-
-    async def _stop_async(self):
-        if self._debug:
-            asyncio.get_event_loop().set_debug(self._debug)
-        await asyncio.gather(*self._stop_coros)
 
     async def _run_async(self):
-        if self._debug:
-            asyncio.get_event_loop().set_debug(self._debug)
-        await asyncio.gather(*self._init_coros)
+        try:
+            if self._debug:
+                asyncio.get_event_loop().set_debug(self._debug)
+            await asyncio.gather(*self._init_coros)
 
-        if self._debug:
-            asyncio.get_event_loop().set_debug(self._debug)
-        await asyncio.gather(*self._coros)
+            if self._debug:
+                asyncio.get_event_loop().set_debug(self._debug)
+            await asyncio.gather(*self._coros)
+        except KeyboardInterrupt:
+            pass
+        except SystemExit:
+            pass
+        except Exception as ex:
+            print(f'EXCEPTION: {ex}')
+        finally:
+            if self._debug:
+                asyncio.get_event_loop().set_debug(self._debug)
+            await asyncio.gather(*self._stop_coros)
