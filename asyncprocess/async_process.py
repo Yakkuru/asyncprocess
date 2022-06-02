@@ -15,7 +15,6 @@ class AsyncProcess:
     
     def run(self) -> None:
         try:
-            asyncio.run(self._initialize_async())
             asyncio.run(self._run_async())
         except KeyboardInterrupt:
             pass
@@ -27,12 +26,15 @@ class AsyncProcess:
             asyncio.run(self._stop_async())
 
     async def _stop_async(self):
+        if self._debug:
+            asyncio.get_event_loop().set_debug(self._debug)
         await asyncio.gather(*self._stop_coros)
 
-    async def _initialize_async(self):
+    async def _run_async(self):
+        if self._debug:
+            asyncio.get_event_loop().set_debug(self._debug)
         await asyncio.gather(*self._init_coros)
 
-    async def _run_async(self):
         if self._debug:
             asyncio.get_event_loop().set_debug(self._debug)
         await asyncio.gather(*self._coros)
